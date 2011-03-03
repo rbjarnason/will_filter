@@ -22,6 +22,14 @@
 #++
 
 module Wf::HelperMethods
+  
+  def options_for_select_simple(options,selected)
+    out = ""
+    options.each do |a,b|
+      out+="<option value=\"#{b}\"#{b==selected ? "selected" : ""}>#{a}</option>"
+    end
+    out.html_safe
+  end
 
   def will_filter(results)
     render(:partial => "/wf/filter/container", :locals => {:wf_filter => results.wf_filter})
